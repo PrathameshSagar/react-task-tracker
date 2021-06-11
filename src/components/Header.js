@@ -1,15 +1,12 @@
 import Button from './button'
 
-const Header = () => {
+const Header = ({addToggle,value}) => {
     
-    const click = () => {
-        console.log('click');
-    }
     
     return (
         <header className="header">
             <h1>Task Tracker</h1>
-            <Button text='Add' color='green' click={click}/>
+            <Button text={`${!value?'Add':'close'}`} color={`${!value?'green':'red'}`} click={addToggle}/>
         </header>
     )
 }
