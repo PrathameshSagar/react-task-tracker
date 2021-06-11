@@ -22,11 +22,11 @@ function App() {
 
 
   const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => { return task.id != id }))
+    setTasks(tasks.filter((task) => { return task.id !== id }))
   }
 
   const toggleReminder = (id) => {
-    setTasks(tasks.map((task) => { return task.id == id ? { ...task, reminder: !task.reminder } : task }))
+    setTasks(tasks.map((task) => { return task.id === id ? { ...task, reminder: !task.reminder } : task }))
   }
 
   return (
