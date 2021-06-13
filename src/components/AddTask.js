@@ -1,9 +1,15 @@
 import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+// import { addTask } from '../reducers/handleTask'
+import { addTask } from '../actions'
+
 
 const AddTask = ({ onAdd }) => {
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
     const [reminder, setReminder] = useState(false)
+
+    const dispatch = useDispatch()
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -13,7 +19,19 @@ const AddTask = ({ onAdd }) => {
             return
         }
 
-        onAdd({ text, day, reminder })
+        // onAdd({ text, day, reminder })
+
+        const id = Math.floor(Math.random() * 10000) + 1
+        let payload = {
+            id,
+            text,
+            day, 
+            reminder
+        }
+
+        dispatch(addTask(payload))
+
+
 
         setText('')
         setDay('')
